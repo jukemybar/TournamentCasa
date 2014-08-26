@@ -1,0 +1,68 @@
+<head>
+  <title>TournamentCasa</title>
+</head>
+
+<body>
+	<div class="container-fluid"> <!--Container-->
+		
+  		
+<div class="row">
+<div class="col-md-6"> <!-- Billard -->
+
+ <table class="table">
+ 	<thead>
+ 		<th>#</th>
+ 		<th>Name</th>
+ 		<th>Points</th>
+ 	</thead>
+ 	<tbody>
+	{{> listPlayers}}
+ 	</tbody>
+
+ </table> <!-- End Table-->
+
+ {{> new_player }}
+
+
+</div> <!-- End Billard -->
+
+
+</div>
+ </div><!-- EndContainer -->
+
+</body>
+
+
+
+
+
+<!-- leaderboard.html -->
+<template name="new_player">
+  <div class="new_player">
+    <input id="new_player_firstName" type="text" placeholder="first name"/>
+	<input id="new_player_lastName" type="text" placeholder="last name" />
+	<input id="new_player_score" type="text" placeholder="score" />
+
+    <input type="button" class="btn btn-default add" value="Add Player" />
+  </div>
+</template>
+
+
+
+
+
+<template name="listPlayers">
+
+ 		{{#each Players}}
+ 		<tr>
+ 			<td>{{  }}</td> <!-- AUTO INCREMENT -->
+ 			<td>{{Name}} {{lastName}}</td>
+ 			<td>{{score}}</td>
+
+ 		</tr>
+		{{/each}}
+
+
+
+
+</template>
