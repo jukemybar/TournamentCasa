@@ -1,4 +1,3 @@
-
 Players = new Meteor.Collection("Players");
 
 
@@ -9,32 +8,38 @@ if (Meteor.isClient) {
 
 
 
-  Template.listPlayers.Players = function () {
-    return Players.find({}, {sort: {Name: 1}});
-  };
+    Template.listPlayers.Players = function() {
+        return Players.find({}, {
+            sort: {
+                Name: 1
+            }
+        });
+    }
+
+Template.listPlayers.Players_with_index = Players.find().map(function(document, index){
+    document.index = index;
+    return document;
+});
 
 
 
 
 
+    //AddPlayer
+    Template.new_player.events = {
+        'click input.add': function() {
+            var new_player_firstName = document.getElementById("new_player_firstName").value;
+            var new_player_lastName = document.getElementById("new_player_lastName").value;
+            var new_player_score = document.getElementById("new_player_score").value;
 
 
-//AddPlayer
-Template.new_player.events = {
-  'click input.add': function () {
-    var new_player_firstName = document.getElementById("new_player_firstName").value;
-    var new_player_lastName = document.getElementById("new_player_lastName").value;
-     var new_player_score = document.getElementById("new_player_score").value;
-
-
-    Players.insert({
-            Name: new_player_firstName, 
-            lastName: new_player_lastName ,
-            score: new_player_score
-          });
-  }
-};
-
+            Players.insert({
+                Name: new_player_firstName,
+                lastName: new_player_lastName,
+                score: new_player_score
+            });
+        }
+    }
 
 
 
@@ -54,11 +59,8 @@ Template.new_player.events = {
 
 
 
-
-
-
 if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
+    Meteor.startup(function() {
+        // code to run on server at startup
+    });
 } // End isServer
