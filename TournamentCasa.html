@@ -4,8 +4,8 @@
 
 <body>
 	<div class="container-fluid"> <!--Container-->
-		
-  		
+
+
 <div class="row">
 <div class="col-md-6"> <!-- Billard -->
 
@@ -53,9 +53,9 @@
 
 <template name="listPlayers">
 
- 		{{#each Players}}
+ 		{{#each Players_with_index}}
  		<tr>
- 			<td>{{  }}</td> <!-- AUTO INCREMENT -->
+ 			<td>{{index}}</td> <!-- AUTO INCREMENT -->
  			<td>{{Name}} {{lastName}}</td>
  			<td>{{score}}</td>
 
